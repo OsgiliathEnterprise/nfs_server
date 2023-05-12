@@ -1,7 +1,7 @@
 galaxy_info:
-  role_name: freeipa_server
+  role_name: nfs_server
   author: OsgiliathEnterprise
-  description: Wrapper role around freeipa-server role
+  description: Configures an NFS server using freeipa kerberos capabilities
   company: Osgiliath
   namespace: tcharl
   # If the issue tracker for your role is not on github, uncomment the

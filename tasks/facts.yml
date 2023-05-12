@@ -1,0 +1,6 @@
+---
+
+- name: Prereq | get current hostname
+  ansible.builtin.command: "hostname"
+  register: volume_machine_hostname
+  changed_when: false

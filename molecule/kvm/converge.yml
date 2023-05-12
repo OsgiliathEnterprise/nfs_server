@@ -2,9 +2,7 @@
 - name: Expose NFS
   hosts: datastore.osgiliath.test
   vars:
-    secure_logs: false
     company_domain: osgiliath.test
-    preferred_nic: "eth1"
     lvm_groups:
       - vgname: non-persistent
         disks:
@@ -22,17 +20,3 @@
     configure_nfs: True
   roles:
     - role: tcharl.nfs_server
-
-- name: Consume NFS
-  hosts: consumer.osgiliath.test
-  vars:
-    preferred_nic: "eth1"
-    company_domain: osgiliath.test
-    configure_nfs: True
-    nfs_mountpoints:
-      - host: datastore.osgiliath.test
-        mountpoints:
-         - remote: /var/nfs
-           local: /net
-  roles:
-    - role: tcharl.ansible_volumes

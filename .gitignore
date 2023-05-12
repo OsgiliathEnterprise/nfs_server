@@ -2,3 +2,7 @@
 **/*__pychache__*
 .cache
 build
+.tox
+molecule/default/tests/__pychache__
+molecule/kvm/tests/__pychache__
+molecule/parallels/tests/__pychache__
