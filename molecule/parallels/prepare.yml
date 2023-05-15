@@ -4,7 +4,7 @@
   hosts: all
   tasks:
     - include_role:
-        name: tcharl.ansible_securehost
+        name: tcharl.nfs_client
         tasks_from: requirements.yml
       vars:
         preferred_nic: "eth1"

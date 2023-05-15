@@ -2,7 +2,7 @@
 - name: prepare IPA
   hosts: consumer.osgiliath.test
   roles:
-    - role: tcharl.ansible_securehost
+    - role: tcharl.nfs_client
   vars:
     preferred_nic: "eth1"
     company_domain: osgiliath.test

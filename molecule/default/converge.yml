@@ -35,4 +35,4 @@
          - remote: /var/nfs
            local: /net
   roles:
-    - role: tcharl.ansible_volumes
+    - role: tcharl.nfs_client
