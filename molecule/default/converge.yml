@@ -1,10 +1,13 @@
 ---
 - name: Expose NFS
-  hosts: datastore.osgiliath.test
+  hosts: all
   vars:
     secure_logs: false
     company_domain: osgiliath.test
     preferred_nic: "eth1"
+    company_realm_password: '123ADMin'
+    company_ad_password: '123ADmPass'
+    standalone_role: False
     lvm_groups:
       - vgname: non-persistent
         disks:
@@ -22,17 +25,3 @@
     configure_nfs: True
   roles:
     - role: tcharl.nfs_server
-
-- name: Consume NFS
-  hosts: consumer.osgiliath.test
-  vars:
-    preferred_nic: "eth1"
-    company_domain: osgiliath.test
-    configure_nfs: True
-    nfs_mountpoints:
-      - host: datastore.osgiliath.test
-        mountpoints:
-         - remote: /var/nfs
-           local: /net
-  roles:
-    - role: tcharl.nfs_client

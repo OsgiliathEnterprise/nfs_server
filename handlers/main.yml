@@ -1,0 +1,27 @@
+---
+# handlers file for lvm
+
+- name: Handler | reload nfs server
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    state: restarted
+    enabled: true
+  become: true
+  listen: nfs_server | handler | reload-nfsd
+  with_items:
+    - "nfs-server"
+    - "nfs-idmapd"
+
+- name: Handler | reexport entries
+  ansible.builtin.command: "exportfs -rav"
+  changed_when: false
+  listen: nfs_server | handler | reload-nfsd
+  become: true
+
+- name: Handler | reload automount on clients
+  ansible.builtin.command: "ipa-client-automount -U"
+  become: True
+  listen: nfs_server | handler | reload-nfsd
+  delegate_to: "{{ item }}"
+  delegate_facts: true
+  loop: "{{ groups[idm_client_group] }}"

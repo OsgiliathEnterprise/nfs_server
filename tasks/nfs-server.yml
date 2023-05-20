@@ -44,20 +44,16 @@
   loop_control:
     loop_var: vgs
 
-- name: Nfs-server | start
-  ansible.builtin.systemd:
-    name: "{{ item }}"
-    state: restarted
-    enabled: true
-  become: True
-  with_items:
-    - "nfs-server"
-    - "nfs-idmapd"
-
-- name: Nfs-server | reexport entries
-  ansible.builtin.command: "exportfs -rav"
-  changed_when: false
-  become: true
+#- name: Nfs-server | reload nfs server
+#  ansible.builtin.systemd:
+#    name: "{{ item }}"
+#    state: restarted
+#    enabled: true
+#  become: True
+#  changed_when: False
+#  with_items:
+#    - "nfs-server"
+#    - "nfs-idmapd"
 
 - name: Nfs-server | enable and start firewalld
   ansible.builtin.include_role:
@@ -71,9 +67,3 @@
           - service: mountd
   tags:
     - standalone
-
-- name: Nfs-server | automount
-  ansible.builtin.command: "ipa-client-automount -U"
-  failed_when: False
-  changed_when: False
-  become: True

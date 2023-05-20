@@ -19,4 +19,4 @@
     group: root
     mode: '0644'
   become: True
-  changed_when: False
+  notify: nfs_server | handler | reload-nfsd
