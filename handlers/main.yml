@@ -23,6 +23,7 @@
     set -o pipefail && echo '{{ company_realm_password }}' | kinit admin > /dev/null
     ipa-client-automount -U
   become: True
+  failed_when: false
   listen: nfs_server | handler | reload-nfsd
   delegate_to: "{{ item }}"
   delegate_facts: true
