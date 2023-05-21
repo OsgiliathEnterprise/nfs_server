@@ -5,6 +5,7 @@ roles:
   - name: robertdebock.core_dependencies
   - name: tcharl.freeipa_server
   - name: tcharl.fail2ban
+  - name: tcharl.etchost_append
   - name: tcharl.ansible_volumes
   - name: tcharl.ansible_nameserver
   - name: tcharl.ansible_securehost
