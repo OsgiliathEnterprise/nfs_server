@@ -4,6 +4,8 @@ roles:
   - name: robertdebock.bootstrap
   - name: robertdebock.core_dependencies
   - name: tcharl.freeipa_server
+  - name: tcharl.ansible_volumes
+  - name: tcharl.ansible_nameserver
   - name: tcharl.ansible_securehost
   - name: tcharl.ansible_routing
   - name: tcharl.ansible_hostname
