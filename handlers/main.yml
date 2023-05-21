@@ -15,11 +15,13 @@
 - name: Handler | reexport entries
   ansible.builtin.command: "exportfs -rav"
   changed_when: false
-  listen: nfs_server | handler | reload-nfsd
   become: true
+  listen: nfs_server | handler | reload-nfsd
 
 - name: Handler | reload automount on clients
-  ansible.builtin.command: "ipa-client-automount -U"
+  ansible.builtin.shell: |
+    set -o pipefail && echo '{{ company_realm_password }}' | kinit admin > /dev/null
+    ipa-client-automount -U
   become: True
   listen: nfs_server | handler | reload-nfsd
   delegate_to: "{{ item }}"
