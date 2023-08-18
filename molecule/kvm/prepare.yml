@@ -6,6 +6,7 @@
         name: tcharl.nfs_server
         tasks_from: requirements.yml
       vars:
+        firewalld_zone: "public"
         standalone_role: True
         allow_dns_zone_overlap: True
         company_domain: "osgiliath.test" # That server's hostname will be should ipa."{{ company_domain }}"

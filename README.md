@@ -1,8 +1,8 @@
 Ansible NFS Server
 =========
 
-* Galaxy: [![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.freeipa_server-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/freeipa_server)
-* Lint & requirements: ![Molecule](https://github.com/OsgiliathEnterprise/freeipa_server/workflows/Molecule/badge.svg)
+* Galaxy: [![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.nfs_server-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/nfs_server)
+* Lint & requirements: ![Molecule](https://github.com/OsgiliathEnterprise/nfs_server/workflows/Molecule/badge.svg)
 * Tests: [![Build Status](https://travis-ci.com/OsgiliathEnterprise/nfs_server.svg?branch=master)](https://travis-ci.com/OsgiliathEnterprise/nfs_server)
 * Chat: [![Join the chat at https://gitter.im/OsgiliathEnterprise/platform](https://badges.gitter.im/OsgiliathEnterprise/platform.svg)](https://gitter.im/OsgiliathEnterprise/platform?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 

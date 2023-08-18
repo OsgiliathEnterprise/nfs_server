@@ -2,7 +2,7 @@
 - name: Nfs-server | configure nfs service
   freeipa.ansible_freeipa.ipaservice:
     ipaadmin_password: "{{ company_realm_password }}"
-    name: nfs/{{ hostname | default(volume_machine_hostname.stdout) }}
+    name: nfs/{{ nfs_server_host.msg }}
     force: True
   no_log: "{{ secure_logs }}"
   delegate_to: "{{ groups[idm_group][0] }}"
@@ -10,7 +10,7 @@
 - name: Nfs-server | allows nfs server to get keytab
   freeipa.ansible_freeipa.ipaservice:
     ipaadmin_password: "{{ company_realm_password }}"
-    name: nfs/{{ hostname | default(volume_machine_hostname.stdout) }}
+    name: nfs/{{ nfs_server_host.msg }}
     action: member
   no_log: "{{ secure_logs }}"
   delegate_to: "{{ groups[idm_group][0] }}"
@@ -21,7 +21,7 @@
   register: keytab_stat
 
 - name: Nfs-server | check kvno of keytab
-  ansible.builtin.command: kinit -k -t {{ keytab_path }} nfs/{{ hostname | default(volume_machine_hostname.stdout) }}
+  ansible.builtin.command: kinit -k -t {{ keytab_path }} nfs/{{ nfs_server_host.msg }}
   register: validate_keytab
   changed_when: false
   failed_when: false
@@ -31,7 +31,7 @@
 - name: Nfs-server | install {{ keytab }}
   ansible.builtin.shell: |
     set -o pipefail && echo '{{ company_realm_password }}' | kinit admin > /dev/null
-    ipa-getkeytab -s {{ hostvars[groups[idm_group][0]].hostname | default(groups[idm_group][0]) }} -p nfs/{{ hostname | default(volume_machine_hostname.stdout) }} -k {{ keytab_path }}
+    ipa-getkeytab -s {{ hostvars[groups[idm_group][0]].hostname | default(groups[idm_group][0]) }} -p nfs/{{ nfs_server_host.msg }} -k {{ keytab_path }}
   register: get_keytab
   when: (not keytab_stat.stat.exists) or (validate_keytab.rc > 0)
   changed_when: "'Keytab successfully retrieved and stored in' in get_keytab.stdout"
@@ -61,7 +61,7 @@
   vars:
     ansible_become: true
     firewalld_zones:
-      - name: "{{ datastore_firewall_zone }}"
+      - name: "{{ firewall_zone }}"
         enabled_services:
           - service: nfs
           - service: mountd

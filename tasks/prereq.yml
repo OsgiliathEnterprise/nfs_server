@@ -3,6 +3,13 @@
 - name: Prereq | nfs-util
   ansible.builtin.package:
     name:
-     - nfs-utils
+     - "{{ item }}"
     state: present
+  loop:
+    - nfs-utils
+    - python3-pip
   become: true
+
+- name: Prereq | netaddr
+  ansible.builtin.pip:
+    name: netaddr

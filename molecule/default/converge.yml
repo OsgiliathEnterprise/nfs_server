@@ -3,6 +3,7 @@
   hosts: all
   vars:
     secure_logs: false
+    hostname: datastore.osgiliath.test
     company_domain: osgiliath.test
     preferred_nic: "eth1"
     company_realm_password: '123ADMin'

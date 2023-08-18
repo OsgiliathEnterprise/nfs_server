@@ -1,7 +1,7 @@
 ---
 # defaults file for lvm
 
-datastore_firewall_zone: 'public'
+firewall_zone: 'public' # trusted would be preferable in most of the cases, but security first by default!
 keytab_path: '/etc/krb5.keytab'
 standalone_role: True
 secure_logs: Yes
