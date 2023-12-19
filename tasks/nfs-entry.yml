@@ -27,7 +27,7 @@
     path: /etc/exports
     regexp: '^{{ lvm.mntp }}'
     insertbefore: BOF
-    line: "{{ lvm.mntp }} {{ lvm.min_ip_to_share | ansible.utils.next_nth_usable(nth_ips_to_share | default(9)) }}(rw)"
+    line: "{{ lvm.mntp }} {{ lvm.min_ip_to_share | ansible.utils.ipsubnet(range_ip_to_share) }}(rw)"
     owner: root
     group: root
     mode: '0644'
