@@ -5,7 +5,7 @@
   register: nfs_server_current_machine_hostname
   changed_when: false
 
-- name: Facts | compute client hostname
+- name: Facts | compute idm hostname
   ansible.builtin.debug:
     msg: "{{ hostname | default(nfs_server_current_machine_hostname.stdout if nfs_server_current_machine_hostname.stdout.endswith(company_domain) else idm_client_default_domain_prefix + '.' + company_domain) }}"
   register: nfs_server_host
