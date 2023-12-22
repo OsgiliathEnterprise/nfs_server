@@ -25,6 +25,7 @@
   become: True
   failed_when: false
   listen: nfs_server | handler | reload-nfsd
+  changed_when: false
   delegate_to: "{{ item }}"
   delegate_facts: true
   loop: "{{ groups[idm_client_group] }}"
