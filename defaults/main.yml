@@ -5,4 +5,4 @@ firewall_zone: 'public' # trusted would be preferable in most of the cases, but 
 keytab_path: '/etc/krb5.keytab'
 standalone_role: True
 secure_logs: Yes
-range_ip_to_share: 9
+range_ip_to_share: 24
