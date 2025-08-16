@@ -2,7 +2,9 @@
 **/*__pychache__*
 .cache
 build
+.ansible
 .tox
 molecule/default/tests/__pycache__
 molecule/kvm/tests/__pycache__
 molecule/parallels/tests/__pycache__
+.poetry
