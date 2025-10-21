@@ -44,7 +44,7 @@
   loop_control:
     loop_var: vgs
 
-#- name: Nfs-server | reload nfs server
+# - name: Nfs-server | reload nfs server
 #  ansible.builtin.systemd:
 #    name: "{{ item }}"
 #    state: restarted

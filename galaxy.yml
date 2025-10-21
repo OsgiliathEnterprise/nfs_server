@@ -18,6 +18,6 @@ license:
 tags:
   - "freeipa"
   - "nfs"
-  - "nfs-server"
+  - "nfsserver"
   - "storage"
   - "linux"
