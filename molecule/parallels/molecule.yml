@@ -10,7 +10,7 @@ driver:
   provider:
     name: parallels
 platforms:
-  - name: datastore.osgiliath.test
+  - name: idm.osgiliath.test
     box: ${TESTBOX:-bento/fedora-42}
     provider_options:
       cpus: 2
@@ -21,6 +21,16 @@ platforms:
         network_name: private_network
     groups:
       - ipaservers
+  - name: datastore.osgiliath.test
+    box: ${TESTBOX:-bento/fedora-42}
+    provider_options:
+      cpus: 2
+      memory: 2048
+    interfaces:
+      - type: dhcp
+        auto_config: true
+        network_name: private_network
+    groups:
       - ipaclients
     provider_raw_config_args:
       - "customize ['set', :id, '--device-add', 'hdd', '--size', '840']"

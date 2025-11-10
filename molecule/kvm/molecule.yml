@@ -10,6 +10,17 @@ driver:
   provider:
     name: libvirt
 platforms:
+  - name: idm.osgiliath.test
+    box: ${TESTBOX:-bento/fedora-42}
+    provider_options:
+      cpus: 2
+      memory: 2048
+    interfaces:
+      - type: dhcp
+        auto_config: true
+        network_name: private_network
+    groups:
+      - ipaservers
   - name: datastore.osgiliath.test
     box: ${TESTBOX:-bento/fedora-42}
     provider_options:
@@ -21,7 +32,6 @@ platforms:
         network_name: private_network
         ip: "192.168.50.5"
     groups:
-      - ipaservers
       - ipaclients
     provider_raw_config_args:
       - "storage :file, :size => '1G', :device => 'vdb'"

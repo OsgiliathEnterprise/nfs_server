@@ -10,7 +10,7 @@ driver:
   provider:
     name: virtualbox
 platforms:
-  - name: datastore.osgiliath.test
+  - idm: datastore.osgiliath.test
     box: ${TESTBOX:-bento/fedora-42}
     provider_options:
       cpus: 2
@@ -22,8 +22,19 @@ platforms:
         network_name: private_network
         # virtualbox__intnet: "internalnetwork"
     groups:
-      - ipaclients
       - ipaservers
+  - name: datastore.osgiliath.test
+    box: ${TESTBOX:-bento/fedora-42}
+    provider_options:
+      driver: "kvm"
+      cpus: 2
+      memory: 2048
+    interfaces:
+      - auto_config: true
+        network_name: private_network
+        ip: "192.168.50.5"
+    groups:
+      - ipaclients
     provider_raw_config_args:
       - "customize ['storagectl', :id, '--name', 'IDE', '--hostiocache', 'on']"
     provider_override_args:

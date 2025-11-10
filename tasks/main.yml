@@ -3,8 +3,6 @@
 
 - name: Requirements
   ansible.builtin.import_tasks: requirements.yml
-  when:
-    - standalone_role
 
 - name: Prereq
   ansible.builtin.import_tasks: prereq.yml

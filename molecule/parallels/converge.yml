@@ -1,10 +1,9 @@
 ---
 - name: Expose NFS
-  hosts: all
+  hosts: datastore.osgiliath.test
   vars:
     secure_logs: False
     company_domain: osgiliath.test
-    hostname: datastore.osgiliath.test
     preferred_nic: "eth1"
     company_realm_password: '123ADMin'
     company_ad_password: '123ADmPass'
