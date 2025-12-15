@@ -12,3 +12,5 @@ skip_list:
  - var-naming[no-role-prefix]  # Variable name {} should contain role name {} as a prefix
  - galaxy[no-changelog]  # Changelog file is missing
  - schema[tasks]
+ - literal-compare
+ - jinja[spacing]

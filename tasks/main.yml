@@ -10,6 +10,11 @@
 - name: Facts
   ansible.builtin.import_tasks: facts.yml
 
+- name: Debug nfs server query
+  ansible.builtin.debug:
+    msg: "{{ query('subelements', lvm_groups, 'lvmetanames', {'skip_missing':True}) | json_query('[?expose_nfs==True]') | list }}"
+
+
 - name: Network file system server
   ansible.builtin.include_tasks: nfs-server.yml
   when:
