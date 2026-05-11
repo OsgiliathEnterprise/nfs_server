@@ -12,7 +12,7 @@
       vars:
         preferred_nic: "eth1"
         standalone_role: True
-        firewalld_zone: "internal"
+        firewalld_zone: "public"
         allow_dns_zone_overlap: True
         company_domain: "osgiliath.test" # That server's hostname will be should ipa."{{ company_domain }}"
         company_realm_password: '123ADMin'
