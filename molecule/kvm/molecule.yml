@@ -30,7 +30,7 @@ platforms:
     interfaces:
       - auto_config: true
         network_name: private_network
-        ip: "192.168.50.5"
+        type: dhcp
     groups:
       - ipaclients
     provider_raw_config_args:
