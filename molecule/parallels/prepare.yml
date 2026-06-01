@@ -10,10 +10,9 @@
     - include_role:
         name: tcharl.freeipa_server
       vars:
-        preferred_nic: "eth1"
         standalone_role: True
-        firewalld_zone: "internal"
         company_domain: "osgiliath.test" # That server's hostname will be should ipa."{{ company_domain }}"
+        preferred_nic: "enp0s5"
         company_realm_password: '123ADMin'
         company_ad_password: '123ADmPass'
     - include_role:
@@ -21,9 +20,9 @@
       vars:
         standalone_role: False
         secure_logs: False
-        preferred_nic: "eth1"
         company_domain: osgiliath.test
-        idm_preferred_nic: "eth1"
+        preferred_nic: "enp0s5"
+        idm_preferred_nic: "enp0s5"
         company_realm_password: '123ADMin'
         company_ad_password: '123ADmPass'
 - name: Prepare
@@ -38,9 +37,9 @@
       vars:
         standalone_role: False
         secure_logs: False
-        preferred_nic: "eth1"
         company_domain: osgiliath.test
-        idm_preferred_nic: "eth1"
+        preferred_nic: "enp0s5"
+        idm_preferred_nic: "enp0s5"
         company_realm_password: '123ADMin'
         company_ad_password: '123ADmPass'
     - include_role:
@@ -48,8 +47,8 @@
       vars:
         standalone_role: False
         secure_logs: False
-        preferred_nic: "eth1"
         company_domain: osgiliath.test
-        idm_preferred_nic: "eth1"
+        preferred_nic: "enp0s5"
+        idm_preferred_nic: "enp0s5"
         company_realm_password: '123ADMin'
         company_ad_password: '123ADmPass'
