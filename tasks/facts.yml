@@ -13,3 +13,15 @@
   ansible.builtin.debug:
     msg: "{{ nfs_server_host }}"
     verbosity: 1
+
+- name: Facts | Cat
+  ansible.builtin.command:
+    cmd: df -h
+  changed_when: false
+  register: fs_server_df_result
+  become: true
+
+- name: Facts | cat mountpoints
+  ansible.builtin.debug:
+    msg: "{{ fs_server_df_result }}"
+    verbosity: 2
